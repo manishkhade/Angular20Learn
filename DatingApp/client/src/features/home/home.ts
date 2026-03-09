@@ -14,8 +14,9 @@ export class Home {
 
     protected registerMode = signal(false);
 
-    protected showRegister()
+    protected showRegister(value: boolean)
     {
-      this.registerMode.set(true);
+
+      this.registerMode.set(value);
     }
 }
