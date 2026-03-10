@@ -17,6 +17,11 @@
         "@schematics/angular:class": {
           "skipTests": true,
           "path": "src/types"
+        },
+        "@schematics/angular:guard":
+        {
+          "skipTests": true,
+          "path": "src/core/guards"
         }
       },
       "root": "",
