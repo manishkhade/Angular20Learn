@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,9 +45,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors(
     x => x.AllowAnyHeader().AllowAnyMethod()
