@@ -46,6 +46,10 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors(
+    x => x.AllowAnyHeader().AllowAnyMethod()
+    .WithOrigins("http://localhost:4200", "https://localhost:4200")
+);
 
 app.UseHttpsRedirection();
 
@@ -53,10 +57,6 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors(
-    x => x.AllowAnyHeader().AllowAnyMethod()
-    .WithOrigins("http://localhost:4200", "https://localhost:4200")
-);
 app.MapControllers();
 
 //seed Data

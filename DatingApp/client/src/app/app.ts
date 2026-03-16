@@ -37,7 +37,7 @@ export class App implements OnInit {
     //   complete: () => console.log('Completed the HTTP request')
     // });
 
-      this.members.set(await this.getMembers());
+      //this.members.set(await this.getMembers());
       this.setCurrentUser();
   }
 
