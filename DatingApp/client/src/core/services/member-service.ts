@@ -13,11 +13,13 @@ export class MemberService {
   private accountService = inject(AccountService);
 
   getMembers() {
-    return this.http.get<Member[]>(this.baseUrl + 'members', this.getHttpOptions());
+    // return this.http.get<Member[]>(this.baseUrl + 'members', this.getHttpOptions());
+    return this.http.get<Member[]>(this.baseUrl + 'members');
   }
 
   getMember(id: string) {
-    return this.http.get<Member>(this.baseUrl + 'members/' + id, this.getHttpOptions());
+    // return this.http.get<Member>(this.baseUrl + 'members/' + id, this.getHttpOptions());
+    return this.http.get<Member>(this.baseUrl + 'members/' + id);
 
   }
 
