@@ -10,7 +10,7 @@ import { User } from '../types/user';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav, Home, RouterOutlet, NgClass],
+  imports: [Nav, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

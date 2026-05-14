@@ -7,7 +7,7 @@ import { Member } from '../../../types/member';
 
 @Component({
   selector: 'app-member-detailed',
-  imports: [AsyncPipe, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './member-detailed.html',
   styleUrl: './member-detailed.css',
 })
@@ -16,12 +16,18 @@ export class MemberDetailed implements OnInit
   private memberservice = inject(MemberService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  protected member$?: Observable<Member>;
+  // protected member$?: Observable<Member>;
+  protected member = signal<Member | undefined>(undefined);
   protected title = signal<string | undefined>('profile');
 
   ngOnInit(): void {
     // this.memberSignal.set(this.loadMember());
-    this.member$ = this.loadMember();
+    // this.member$ = this.loadMember();
+    this.route.data.subscribe({
+      next: data => {
+        this.member.set(data['member']);
+      }
+    });
     this.title.set(this.route.firstChild?.snapshot?.title);
 
     this.router.events.pipe(
